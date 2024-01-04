@@ -15,6 +15,7 @@ module Spree
 
     belongs_to :store
     has_many :conversations
+    has_many_attached :files
 
     self.whitelisted_ransackable_associations = %w[conversations]
     self.whitelisted_ransackable_attributes = %w[number category order_no status priority customer_name email]
