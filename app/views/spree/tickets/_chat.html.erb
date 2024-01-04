@@ -1,0 +1,6 @@
+<div id="chat">
+  <% @ticket.conversations.each do |conversation| %>
+    <p><%= conversation.message %></p>
+    <!-- Display other message details as needed -->
+  <% end %>
+</div>

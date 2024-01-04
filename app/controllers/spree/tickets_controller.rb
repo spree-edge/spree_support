@@ -1,6 +1,6 @@
 module Spree
   class TicketsController < Spree::StoreController
-    before_action :set_ticket, only: %i[ show  ]
+    before_action :set_ticket, only: %i[ show conversations ]
 
     def index
       @tickets = Spree::Ticket.all
@@ -27,6 +27,20 @@ module Spree
       end
     end
 
+    def conversations
+      @message = @ticket.conversations.build(conversation_params)
+
+      if @message.save
+        respond_to do |format|
+          format.html { redirect_to @ticket, notice: 'Message was successfully created.' }
+          format.turbo_stream
+        end
+      else
+        flash[:error] = @message.errors.full_messages.join(', ')
+        redirect_to conversations_ticket_path(@ticket)
+      end
+    end
+
     private
 
     def set_ticket
@@ -36,6 +50,10 @@ module Spree
     # Only allow a list of trusted parameters through.
     def ticket_params
       params.require(:ticket).permit!
+    end
+
+    def conversation_params
+      params.require(:conversation).permit(:message)
     end
   end
 end
