@@ -6,7 +6,7 @@ class CreateSpreeConversations < ActiveRecord::Migration[6.1]
       t.string :sender_email
       t.string :reciever
       t.string :reciever_email
-      t.belongs_to :spree_ticket, foreign_key: true
+      t.belongs_to :ticket, foreign_key: { to_table: :spree_tickets }
 
       t.timestamps
     end

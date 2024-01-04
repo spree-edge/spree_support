@@ -1,0 +1,40 @@
+<div data-hook="admin_products_sidebar">
+  <%= search_form_for [:admin, @search] do |f| %>
+    <div data-hook="admin_products_index_search" class="row">
+      <div class="col-12 col-lg-6">
+        <div class="form-group">
+          <%= f.label :order_no_eq, 'Order Number' %>
+          <%= f.text_field :order_no_eq, size: 15, class: "form-control js-quick-search-target js-filterable" %>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="form-group">
+          <%= f.label :number_eq, 'Ticket No.' %>
+          <%= f.text_field :number_eq, size: 15, class: "form-control js-filterable" %>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="form-group">
+          <%= f.label :customer_name, 'Order Number' %>
+          <%= f.text_field :customer_name, size: 15, class: "form-control js-filterable" %>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-6">
+        <div class="form-group">
+          <%= f.label :email_cont, 'Order Number' %>
+          <%= f.text_field :email_cont, size: 15, class: "form-control js-filterable" %>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="form-group">
+          <%= f.label :status_eq, 'Order Number' %>
+          <%= f.text_field :status_eq, size: 15, class: "form-control js-filterable" %>
+        </div>
+      </div>
+    </div>
+    <div data-hook="admin_products_index_search_buttons" class="form-actions">
+      <%= button Spree.t(:search), 'search.svg' %>
+    </div>
+  <% end %>
+</div>
