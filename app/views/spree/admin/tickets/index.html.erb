@@ -67,9 +67,9 @@
           <td class="text-center"><%= ticket.try(:assignee) %></td>
           <td class="actions ">
             <span class="d-flex justify-content-end">
-              <%#= link_to_edit ticket, no_text: true, class: 'edit' if can?(:edit, ticket)%>
+              <%= link_to_edit ticket, no_text: true, class: 'edit' if can?(:edit, ticket)%>
 
-              <%= link_to_with_icon 'eye.svg', '', admin_ticket_path(ticket), class: '' %>
+              <%#= link_to_with_icon 'eye.svg', '', admin_ticket_path(ticket), class: '' %>
             </span>
           </td>
         </tr>

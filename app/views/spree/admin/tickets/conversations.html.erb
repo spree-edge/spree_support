@@ -8,18 +8,16 @@
   <li class="nav-item">
     <%= link_to 'Ticket Infomation',
                 spree.admin_ticket_path(@ticket),
-                class: "nav-link #{'active'}" %>
+                class: "nav-link" %>
   </li>
   <li class="nav-item">
     <%= link_to 'Conversation',
                 conversations_admin_ticket_path(@ticket),
-                class: "nav-link" %>
+                class: "nav-link active" %>
   </li>
 <% end  %>
 
-<%= form_for [:admin, @ticket] do |f| %>
-  <fieldset>
-    <%= render partial: 'form', locals: { f: f } %>
-    <%= render partial: 'spree/admin/shared/edit_resource_links' %>
-  </fieldset>
-<% end %>
+<%= render partial: 'spree/admin/tickets/chat' %>
+
+<%= render partial: 'spree/admin/tickets/chat_form' %>
+

@@ -1,0 +1,7 @@
+<%= turbo_stream.update "admin_dashboard_ticket_conversations" do %>
+  <%= render partial: 'spree/admin/tickets/chat' %>
+<% end %>
+
+<%= turbo_stream.update "admin_dashboard_ticket_conversations_chat_form" do %>
+  <%= render partial: 'spree/admin/tickets/chat_form' %>
+<% end %>

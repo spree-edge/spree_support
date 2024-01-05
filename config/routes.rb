@@ -9,7 +9,7 @@ Spree::Core::Engine.add_routes do
   namespace :admin do
     resources :tickets do
       member do
-        post :conversations
+        match :conversations, via: [:get, :post]
       end
     end
   end

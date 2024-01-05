@@ -1,6 +1,15 @@
 module Spree
   module Admin
     class TicketsController < ResourceController
+      before_action :find_resource, only: [:conversations]
+
+      def conversations
+        if request.post?
+          @message = @ticket.conversations.build(conversation_params)
+
+          @message.save
+        end
+      end
 
       private
 
@@ -31,6 +40,10 @@ module Spree
           base_scope = model_class.try(:for_store, current_store) || model_class
           base_scope.find_by(number: params[:id])
         end
+      end
+
+      def conversation_params
+        params.require(:conversation).permit(:message)
       end
     end
   end

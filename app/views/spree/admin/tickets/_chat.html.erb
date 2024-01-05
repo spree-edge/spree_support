@@ -1,0 +1,13 @@
+<%= turbo_frame_tag 'admin_dashboard_ticket_conversations' do %>
+  <% if @ticket.conversations.any? %>
+    <% @ticket.conversations.each do |conversation| %>
+      <p><%= conversation.message %></p>
+      <!-- Display other message details as needed -->
+      <hr>
+    <% end %>
+  <% else %>
+    <div class="text-center no-objects-found m-5">
+      <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Conversation)) %>!
+    </div>
+  <% end %>
+<% end %>
