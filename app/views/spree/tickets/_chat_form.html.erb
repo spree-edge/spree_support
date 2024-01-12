@@ -1,0 +1,6 @@
+<%= turbo_frame_tag 'dashboard_ticket_conversations_chat_form' do %>
+  <%= form_with(model: [@ticket.conversations.new], url: conversations_ticket_path(@ticket),  data: { controller: "turbo-stream" }) do |form| %>
+    <%= form.text_field :message, placeholder: "Type your message here" %>
+    <%= form.submit "Send" %>
+  <% end %>
+<% end %>
