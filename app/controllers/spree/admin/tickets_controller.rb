@@ -43,7 +43,7 @@ module Spree
       end
 
       def conversation_params
-        params.require(:conversation).permit(:message)
+        params.require(:conversation).permit(:message, files: [])
       end
     end
   end

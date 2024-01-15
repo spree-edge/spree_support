@@ -49,11 +49,11 @@ module Spree
 
     # Only allow a list of trusted parameters through.
     def ticket_params
-      params.require(:ticket).permit!
+      params.require(:ticket).permit(:customer_name, :email, :title, :category, :order_no, :description, files: [])
     end
 
     def conversation_params
-      params.require(:conversation).permit(:message)
+      params.require(:conversation).permit(:message, files: [])
     end
   end
 end

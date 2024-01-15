@@ -2,7 +2,10 @@
   <%= form_for [:admin, @ticket.conversations.new], url: conversations_admin_ticket_path(@ticket), data: { controller: "turbo-stream" } do |f| %>
     <fieldset>
       <div class="row">
-        <div class="col-10">
+        <div class="col-2">
+          <%= f.file_field :files, multiple: true, placeholder: 'Upload Files', class: 'mt-4' %>
+        </div>
+        <div class="col-8">
           <%= f.field_container :message do %>
             <%= f.label :message, raw(Spree.t(:message) + required_span_tag) %>
             <%= f.text_area :message, { rows: "5", class: "form-control" } %>

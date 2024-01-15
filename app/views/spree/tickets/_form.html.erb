@@ -1,47 +1,32 @@
-<%= form_with(model: ticket) do |form| %>
-  <% if ticket.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+<div class="form-group checkout-content-inner-field mb-5 has-float-label">
+  <%= f.text_field :customer_name, class: 'spree-flat-input', placeholder: 'Enter customer name' %>
+  <%= f.label :customer_name, 'Customer Name' %>
+</div>
 
-      <ul>
-        <% ticket.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="form-group checkout-content-inner-field mb-5 has-float-label">
+  <%= f.email_field :email, class: 'spree-flat-input', placeholder: 'Enter Email' %>
+  <%= f.label :email, 'Email' %>
+</div>
+<div class="form-group checkout-content-inner-field mb-5 has-float-label">
+  <%= f.text_field :title, class: 'spree-flat-input', placeholder: 'Title' %>
+  <%= f.label :title, 'Title' %>
+</div>
 
-  <div class="field">
-    <%= form.label :customer_name %>
-    <%= form.text_field :customer_name %>
-  </div>
+<div class="form-group checkout-content-inner-field mb-5 has-float-label">
+  <%= f.text_field :category, class: 'spree-flat-input', placeholder: 'Enter category' %>
+  <%= f.label :category, 'Category' %>
+</div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
+<div class="form-group checkout-content-inner-field mb-5 has-float-label">
+  <%= f.text_field :order_no, class: 'spree-flat-input', placeholder: 'Enter Order Number' %>
+  <%= f.label :order_no, 'Order No' %>
+</div>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+<div class="form-group checkout-content-inner-field mb-5 has-float-label">
+  <%= f.text_area :description, rows: 10 , class: 'spree-flat-input', placeholder: 'Enter Description' %>
+  <%= f.label :description, 'Description' %>
+</div>
 
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.text_field :category %>
-  </div>
-
-  <div class="field">
-    <%= form.label :order_no %>
-    <%= form.text_field :order_no %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<div class="form-group checkout-content-inner-field mb-5 has-float-label">
+  <%= f.file_field :files, multiple: true, class: 'spree-flat-input', placeholder: 'Upload Files' %>
+</div>

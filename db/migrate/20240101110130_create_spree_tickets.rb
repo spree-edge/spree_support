@@ -12,6 +12,7 @@ class CreateSpreeTickets < ActiveRecord::Migration[6.1]
       t.string :email
       t.belongs_to :assignee, foreign_key: { to_table: :spree_users }
       t.belongs_to :store, foreign_key: { to_table: :spree_stores }
+      t.belongs_to :user, foreign_key: { to_table: :spree_users }
 
       t.timestamps
     end

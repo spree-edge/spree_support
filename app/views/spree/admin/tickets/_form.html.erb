@@ -18,7 +18,7 @@
   <div class="col-12 col-md-4">
     <%= f.field_container :priority do %>
       <%= f.label :priority, raw(Spree.t(:priority) + required_span_tag) %>
-      <%= f.select :priority, Spree::Ticket::PRIORITY.map(&:titleize), { prompt: Spree.t(:select_priority) }, { class: 'form-control select2' } %>
+      <%= f.select :priority, Spree::Ticket::PRIORITY.map { |priority | [ priority.titleize, priority ] }, { prompt: Spree.t(:select_priority) }, { class: 'form-control select2' } %>
       <%= f.error_message_on :priority %>
     <% end %>
   </div>
@@ -58,7 +58,7 @@
   <div class="col-12 col-md-4">
     <%= f.field_container :status do %>
       <%= f.label :status, raw(Spree.t(:status) + required_span_tag) %>
-      <%= f.select :status, Spree::Ticket::STATUS.map(&:titleize), {}, { class: 'form-control select2' } %>
+      <%= f.select :status, Spree::Ticket::STATUS.map { |state| [ state.titleize, state ] }, {}, { class: 'form-control select2' } %>
       <%= f.error_message_on :status %>
     <% end %>
   </div>
