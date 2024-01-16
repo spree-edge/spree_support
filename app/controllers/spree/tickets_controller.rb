@@ -1,9 +1,10 @@
 module Spree
   class TicketsController < Spree::StoreController
-    load_and_authorize_resource class: Spree::Ticket
     include EnsureSupport
 
     before_action :set_ticket, only: %i[ show conversations ]
+
+    load_and_authorize_resource class: Spree::Ticket
 
     def index
       @tickets = Spree::Ticket.all
