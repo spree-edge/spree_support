@@ -1,5 +1,7 @@
 module Spree
   class TicketsController < Spree::StoreController
+    include EnsureSupport
+
     before_action :set_ticket, only: %i[ show conversations ]
 
     def index
@@ -49,7 +51,7 @@ module Spree
 
     # Only allow a list of trusted parameters through.
     def ticket_params
-      params.require(:ticket).permit(:customer_name, :email, :title, :category, :order_no, :description, files: [])
+      params.require(:ticket).permit(:customer_name, :email, :phone_number, :title, :category, :order_no, :description, files: [])
     end
 
     def conversation_params

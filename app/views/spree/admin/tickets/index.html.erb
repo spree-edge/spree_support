@@ -50,6 +50,7 @@
         <th scope="col" class="text-center"><%= 'Created No' %></th>
         <th scope="col" class="text-center"><%= 'Status' %></th>
         <th scope="col" class="text-center"><%= 'Email' %></th>
+        <th scope="col" class="text-center"><%= 'Phone No.' %></th>
         <th scope="col" class="text-center"><%= 'Asignee' %></th>
         <th scope="col" class="text-center" class="actions"></th>
       </tr>
@@ -64,7 +65,8 @@
           <td class="text-center"><%= ticket.created_at %></td>
           <td class="text-center"><%= ticket.status %></td>
           <td class="text-center"><%= ticket.email %></td>
-          <td class="text-center"><%= ticket.try(:assignee) %></td>
+          <td class="text-center"><%= ticket.phone_number %></td>
+          <td class="text-center"><%= ticket.try(:assignee).try(:email) %></td>
           <td class="actions ">
             <span class="d-flex justify-content-end">
               <%= link_to_edit ticket, no_text: true, class: 'edit' if can?(:edit, ticket) %>
