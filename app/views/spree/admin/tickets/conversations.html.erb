@@ -1,0 +1,23 @@
+<% content_for :page_title do %>
+  <%= link_to Spree.t(:tickets), spree.admin_tickets_url %> /
+  <%= @ticket.number %>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/error_messages', locals: { target: @ticket } %>
+<% content_for :page_tabs do %>
+  <li class="nav-item">
+    <%= link_to 'Ticket Infomation',
+                spree.edit_admin_ticket_path(@ticket),
+                class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Conversation',
+                conversations_admin_ticket_path(@ticket),
+                class: "nav-link active" %>
+  </li>
+<% end  %>
+
+<%= render partial: 'spree/admin/tickets/chat' %>
+
+<%= render partial: 'spree/admin/tickets/chat_form' %>
+

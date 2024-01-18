@@ -1,0 +1,36 @@
+<div class="form-group checkout-content-inner-field mb-5 has-float-label">
+  <%= f.text_field :customer_name, class: 'spree-flat-input', placeholder: 'Enter customer name' %>
+  <%= f.label :customer_name, 'Customer Name' %>
+</div>
+
+<div class="form-group checkout-content-inner-field mb-5 has-float-label">
+  <%= f.email_field :email, class: 'spree-flat-input', placeholder: 'Enter Email' %>
+  <%= f.label :email, 'Email' %>
+</div>
+<div class="form-group checkout-content-inner-field mb-5 has-float-label">
+  <%= f.text_field :title, class: 'spree-flat-input', placeholder: 'Title' %>
+  <%= f.label :title, 'Title' %>
+</div>
+
+<div class="form-group checkout-content-inner-field mb-5 has-float-label">
+  <%= f.text_field :category, class: 'spree-flat-input', placeholder: 'Enter category' %>
+  <%= f.label :category, 'Category' %>
+</div>
+
+<div class="form-group checkout-content-inner-field mb-5 has-float-label">
+  <%= f.text_field :order_no, class: 'spree-flat-input', placeholder: 'Enter Order Number' %>
+  <%= f.label :order_no, 'Order No' %>
+</div>
+<div class="form-group checkout-content-inner-field mb-5 has-float-label">
+  <%= f.phone_field :phone_number, class: 'spree-flat-input', placeholder: 'Enter Phone Number' %>
+  <%= f.label :phone_number, 'Phone number' %>
+</div>
+
+<div class="form-group checkout-content-inner-field mb-5 has-float-label">
+  <%= f.text_area :description, rows: 10 , class: 'spree-flat-input', placeholder: 'Enter Description' %>
+  <%= f.label :description, 'Description' %>
+</div>
+
+<div class="form-group checkout-content-inner-field mb-5 has-float-label">
+  <%= f.file_field :files, multiple: true, class: 'spree-flat-input', placeholder: 'Upload Files' %>
+</div>

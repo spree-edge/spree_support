@@ -1,0 +1,38 @@
+<div class="col-lg-6 offset-lg-3 border">
+  <h3 class="spree-header spree-mb-large spree-mt-large"><%= 'Recent Raised Tickets' %></h3>
+
+  <p>
+    <strong>Title:</strong>
+    <%= @ticket.title %>
+  </p>
+
+  <p>
+    <strong>category:</strong>
+    <%= @ticket.category %>
+  </p>
+
+  <p>
+    <strong>order_no:</strong>
+    <%= @ticket.order_no %>
+  </p>
+
+  <p>
+    <strong>description:</strong>
+    <%= @ticket.description %>
+  </p>
+
+  <p>
+    <strong>phone number:</strong>
+    <%= @ticket.phone_number %>
+  </p> 
+  
+  <!-- Chat Section -->
+  <%= render partial: 'spree/tickets/chat' %>
+  
+  <% unless @ticket.closed? %>
+    <!-- Chat form Section -->
+    <%= render partial: 'spree/tickets/chat_form' %>
+  <% else %>
+    <h5> Ticket <%= @ticket.number %> has been marked as closed by the customer support.</h5>
+  <% end %>
+</div>

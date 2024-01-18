@@ -1,0 +1,87 @@
+<% content_for :page_title do %>
+  <%= plural_resource_name(Spree::Ticket) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t(:new_ticket), new_object_url, { class: "btn-success", icon: 'add.svg', id: 'admin_new_ticket' } %>
+<% end if can?(:create, Spree::Ticket) %>
+
+<% content_for :page_tabs do %>
+  <li class="nav-item">
+    <%= link_to Spree.t('admin.ticket.all'),
+                spree.admin_tickets_path,
+                class: "nav-link #{'active' if params[:q][:status_eq].blank?}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Open',
+                params.merge({q: {status_eq: 'open'}}).permit!,
+                class: "nav-link #{'active' if params[:q][:status_eq] == 'open'}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Awaiting Response',
+                params.merge({q: {status_eq: 'awaiting'}}).permit!,
+                class: "nav-link #{'active' if params[:q][:status_eq] == 'awaiting'}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'In progress',
+                params.merge({q: {status_eq: 'in_progress'}}).permit!,
+                class: "nav-link #{'active' if params[:q][:status_eq] == 'in_progress'}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Closed',
+                params.merge({q: {status_eq: 'closed'}}).permit!,
+                class: "nav-link #{'active' if params[:q][:status_eq] == 'closed'}" %>
+  </li>
+<% end  %>
+
+<% content_for :table_filter do %>
+  <%= render partial: 'filters' %>
+<% end %>
+
+<% if @collection.any? %>
+<div class="table-responsive border rounded bg-white">
+  <table class="table">
+    <thead class="text-muted">
+      <tr>
+        <th scope="col" class="text-center"><%= 'Ticket No.' %></th>
+        <th scope="col" class="text-center"><%= sort_link @search, :customer_name, Spree.t(:customer_name), { default_order: "desc" }, {} %></th>
+        <th scope="col" class="text-center"><%= 'Order No.' %></th>
+        <th scope="col" class="text-center"><%= 'Priority' %></th>
+        <th scope="col" class="text-center"><%= 'Created No' %></th>
+        <th scope="col" class="text-center"><%= 'Status' %></th>
+        <th scope="col" class="text-center"><%= 'Email' %></th>
+        <th scope="col" class="text-center"><%= 'Phone No.' %></th>
+        <th scope="col" class="text-center"><%= 'Asignee' %></th>
+        <th scope="col" class="text-center" class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @collection.each do |ticket| %>
+        <tr class="<%= cycle('odd', 'even') %>">
+          <td class="text-center"><%= ticket.number %></td>
+          <td class="text-center"><%= ticket.customer_name %></td>
+          <td class="text-center"><%= ticket.order_no rescue '--' %></td>
+          <td class="text-center"><%= ticket.priority %></td>
+          <td class="text-center"><%= ticket.created_at %></td>
+          <td class="text-center"><%= ticket.status %></td>
+          <td class="text-center"><%= ticket.email %></td>
+          <td class="text-center"><%= ticket.phone_number %></td>
+          <td class="text-center"><%= ticket.try(:assignee).try(:email) %></td>
+          <td class="actions ">
+            <span class="d-flex justify-content-end">
+              <%= link_to_edit ticket, no_text: true, class: 'edit' if can?(:edit, ticket) %>
+            </span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<% else %>
+  <div class="text-center no-objects-found m-5">
+    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Ticket)) %>,
+    <%= link_to Spree.t(:add_one), new_object_url if can?(:create, Spree::Ticket) %>!
+  </div>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/index_table_options', locals: { collection: @collection } %>

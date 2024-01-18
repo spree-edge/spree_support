@@ -1,0 +1,19 @@
+<%= turbo_frame_tag 'admin_dashboard_ticket_conversations' do %>
+  <% if @ticket.conversations.any? %>
+    <% @ticket.conversations.each do |conversation| %>
+      <p><%= conversation.message %></p>
+      <!-- Display other message details as needed -->
+       <% conversation.files.each_with_index do |file, idx| %>
+        <p>
+          <% file_url = Rails.application.routes.url_helpers.url_for(file) %>
+          <%= link_to file.blob.filename.to_s, file_url, target: "_blank" %>
+        </p>
+      <% end %>
+      <hr>
+    <% end %>
+  <% else %>
+    <div class="text-center no-objects-found m-5">
+      <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Conversation)) %>!
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,11 @@
+<%= render 'spree/shared/error_messages', target: @ticket %>
+<div class="col-lg-6 offset-lg-3">
+  <h3 class="spree-header spree-mb-large spree-mt-large"><%= 'Create Ticket' %></h3>
+  <%= form_for @ticket, html: { id: 'checkout_form_address' },  multipart: true do |f| %>
+    <%= render 'form', f: f %>
+
+    <%= f.submit 'Create', class: 'btn btn-primary btn-block spree-btn mb-5' %>
+
+    <%= link_to 'Cancel', root_path , class: 'btn-outline-dark btn btn-block spree-btn mb-5' %>
+  <% end %>
+</div>
