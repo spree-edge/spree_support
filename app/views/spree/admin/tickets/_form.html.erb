@@ -42,7 +42,7 @@
   <div class="col-12 col-md-4">
     <%= f.field_container :assignee_id do %>
       <%= f.label :assignee_id, raw(Spree.t(:assignee) + required_span_tag) %>
-      <%= f.text_field :assignee_id, class: 'form-control' %>
+      <%= f.select :assignee_id, Spree::User.pluck(:email, :id), { include_blank: true }, { class: 'form-control select2' } %>
       <%= f.error_message_on :assignee_id %>
     <% end %>
   </div>

@@ -34,6 +34,12 @@ module Spree
     def conversations
       @message = @ticket.conversations.build(conversation_params)
 
+      @message.sender_name = @ticket.customer_name
+      @message.sender = spree_current_user
+
+      @message.reciever_name ||= 'Support'
+      @message.reciever = @ticket.assignee
+
       if @message.save
         respond_to do |format|
           format.html { redirect_to @ticket, notice: 'Message was successfully created.' }
@@ -53,7 +59,7 @@ module Spree
 
     # Only allow a list of trusted parameters through.
     def ticket_params
-      params.require(:ticket).permit(:customer_name, :email, :phone_number, :title, :category, :order_no, :description, files: [])
+      params.require(:ticket).permit(:customer_name, :email, :phone_number, :title, :category, :order_no, :description, :user_id, files: [])
     end
 
     def conversation_params

@@ -1,5 +1,6 @@
 <div class="container">
   <h1>Recent Raised Tickets</h1>  
+  <%= link_to 'Create Ticket', new_ticket_path, class: 'btn btn-primary my-3' %>
 
   <% @tickets.each do |ticket| %>
     <div class="card my-5 w-100">

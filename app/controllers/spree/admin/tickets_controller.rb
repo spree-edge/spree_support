@@ -9,6 +9,12 @@ module Spree
         if request.post?
           @message = @ticket.conversations.build(conversation_params)
 
+          @message.sender_name = 'Support'
+          @message.sender = spree_current_user
+
+          @message.reciever_name = @ticket.customer_name
+          @message.reciever = @ticket.user
+
           @message.save
         end
       end

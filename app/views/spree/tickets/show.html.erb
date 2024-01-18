@@ -2,6 +2,11 @@
   <h3 class="spree-header spree-mb-large spree-mt-large"><%= 'Recent Raised Tickets' %></h3>
 
   <p>
+    <strong>USER:</strong>
+    <%= @ticket.user.email %>
+  </p>
+
+  <p>
     <strong>Title:</strong>
     <%= @ticket.title %>
   </p>

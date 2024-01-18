@@ -17,8 +17,8 @@ module Spree
     belongs_to :assignee, class_name: 'Spree::User', foreign_key: 'assignee_id'
     belongs_to :user, class_name: 'Spree::User', foreign_key: 'user_id'
     
-    has_many :conversations
-    has_many_attached :files
+    has_many :conversations, dependent: :destroy
+    has_many_attached :files, dependent: :destroy
 
     self.whitelisted_ransackable_associations = %w[conversations]
     self.whitelisted_ransackable_attributes = %w[number category order_no status priority customer_name email]

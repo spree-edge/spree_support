@@ -1,7 +1,7 @@
 <%= turbo_frame_tag 'dashboard_ticket_conversations' do %>
   <% if @ticket.conversations.any? %>
     <% @ticket.conversations.each do |conversation| %>
-      <p><%= conversation.message %></p>
+      <p><strong> <%= conversation.sender_name %> -> </strong><%= conversation.message %></p>
 
        <% conversation.files.each_with_index do |file, idx| %>
         <p>

@@ -34,3 +34,5 @@
 <div class="form-group checkout-content-inner-field mb-5 has-float-label">
   <%= f.file_field :files, multiple: true, class: 'spree-flat-input', placeholder: 'Upload Files' %>
 </div>
+
+<%= f.hidden_field :user_id, value: spree_current_user.try(:id) %>
