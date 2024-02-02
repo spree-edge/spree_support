@@ -1,0 +1,102 @@
+/* ticket chating  */
+
+.chating-container {
+  h1 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 76px;
+  }
+}
+
+.chating-box {
+  border: 1px solid #e2e2e2;
+  /* padding: 50px 55px 72px 55px; */
+  margin-top: 30px;
+  gap: 30px;
+  .ticket-label {
+    font-weight: 600;
+  }
+  .ticket-number {
+    color: #717171;
+  }
+  .category {
+    color: #717171;
+    font-weight: 600;
+    margin-top: 20px;
+  }
+  .category-description {
+    font-weight: 500;
+  }
+}
+
+.awaiting-response {
+  background-color: #d6ecff;
+  padding: 11px 16px;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.resolved-message {
+  background-color: #e6f6f2;
+  padding: 11px 16px;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.chating-bot {
+  margin-top: 33px;
+  gap: 30px;
+}
+
+.bot-name {
+  font-size: 20px;
+  font-weight: 600;
+  .date {
+    color: #6c757d;
+    font-size: 13px;
+    font-weight: 400;
+  }
+}
+
+.bot-message {
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.chating-user {
+  gap: 30px;
+  margin-top: 42px;
+  .user-logo {
+    color: #f16719;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #ffe7d6;
+    height: 70px;
+    width: 70px;
+    padding: 21px;
+  }
+  .user-message {
+    font-size: 16px;
+  }
+}
+
+.drop-message {
+  height: 95px;
+}
+
+.chat-upload-button {
+  background-color: #ededed;
+  cursor: pointer;
+}
+
+#conversation_message:focus {
+  box-shadow: none;
+}
+
+.closing-message {
+  background-color: #f5f5f5;
+  padding: 40px;
+  p {
+    font-size: 14px;
+  }
+}

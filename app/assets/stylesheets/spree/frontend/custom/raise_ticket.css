@@ -1,0 +1,27 @@
+/* raise tickets */
+
+.btn-outline-dark:hover {
+  background-color: #232323;
+}
+
+.add-attachment {
+  border: 1px solid #000000;
+  border-radius: 4px;
+  padding: 10px 16px;
+  cursor: pointer;
+  p {
+    font-size: 16px;
+    color: #000000;
+  }
+}
+
+#ticket_customer_name::placeholder,
+#ticket_email::placeholder,
+#ticket_title::placeholder,
+#ticket_phone_number::placeholder,
+#ticket_category::placeholder,
+#ticket_order_no::placeholder,
+#ticket_description::placeholder {
+  color: #000000;
+  opacity: 1;
+}

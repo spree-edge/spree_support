@@ -1,15 +1,25 @@
 <%= turbo_frame_tag 'dashboard_ticket_conversations_chat_form' do %>
   <%= form_with(model: [@ticket.conversations.new], url: conversations_ticket_path(@ticket),  data: { controller: "turbo-stream" }) do |form| %>
 
-  <div class="row">
-    <div class="col-2">
-      <%= form.file_field :files, multiple: true, placeholder: 'Upload Files' %>
+  <div class="drop-message d-flex">
+    <div>
+      <%= form.file_field :files, multiple: true, placeholder: 'Upload Files', id: 'upload-file', class: 'd-none' %>
+      <label for="upload-file" class="h-100 mb-0">
+        <p class="chat-upload-button h-100 d-flex align-items-center px-3">
+          <%= image_tag('frontend-custom-attach-file.svg', alt: 'Add attachment', width: '15px', height: '20px') %>
+        </p>
+      </label>
     </div>
-    <div class="col-8">
-      <%= form.text_field :message, placeholder: "Type your message here", class: 'w-100' %>
+    <div class="w-100 d-flex">
+      <%= form.text_field :message, placeholder: "Type your message here", class: 'w-100 form-control spree-flat-input border-0' %>
     </div>
-    <div class="col-2">
-      <%= form.submit "Send" %>
+    <div>
+      <%= form.submit "Send", id: 'send-message', class:' d-none' %>
+      <label for="send-message" class="h-100 mb-0">
+        <p  class="chat-upload-button h-100 d-flex align-items-center px-3">
+          <%= image_tag('frontend-custom-send.svg', alt: 'Add attachment', width: '18px', height: '15px') %>
+        </p>
+      </label>
     </div>
   </div>
   <% end %>

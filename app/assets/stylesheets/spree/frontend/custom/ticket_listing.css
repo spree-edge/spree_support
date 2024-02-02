@@ -1,0 +1,30 @@
+/* raise tickets listing  */
+
+.tickets {
+  margin-top: 80px;
+  h1 {
+    font-size: 24px;
+  }
+}
+
+.ticket-listing {
+  border: 1px solid #e2e2e2;
+  padding: 30px;
+  margin-top: 30px;
+}
+
+.ticket-description {
+  color: #010a51;
+  font-size: 14px;
+}
+
+.ticket-detail {
+  gap: 10px;
+  p {
+    font-size: 14px;
+    padding-right: 10px;
+    border-right: 1px solid #e2e2e2;
+    font-weight: 500;
+    color: #707070;
+  }
+}

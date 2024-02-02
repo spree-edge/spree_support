@@ -1,6 +1,24 @@
-<div class="container">
-  <h1>Recent Raised Tickets</h1>  
-  <%= link_to 'Create Ticket', new_ticket_path, class: 'btn btn-primary my-3' %>
+<div class="container tickets">
+  <div class="d-sm-flex justify-content-between align-items-center">
+    <h1 class="mb-0">Recent Raised Tickets</h1>
+    <%= link_to 'Raise Ticket', new_ticket_path, class: 'btn btn-primary my-3' %>
+  </div>
+
+  <div class="ticket-listing">
+    <% @tickets.each do |ticket| %>
+        <div class="d-sm-flex justify-content-between align-items-center mt-5 pb-4 border-bottom border-lightgray">
+          <div>
+            <p class="ticket-description"><%= ticket.description %></p>
+            <div class="d-flex ticket-detail mt-2 align-items-center">
+              <p class="text-success">Resolved Issue</p>
+              <p>Account</p>
+              <p class="border-right-0">Mon, 22 Nov</p>
+            </div>
+          </div>
+          <p class="mt-2 mt-sm-0"><ins><%= link_to 'View', ticket_path(ticket) %></ins></p>
+        </div>
+    <% end %>
+  </div>
 
   <% @tickets.each do |ticket| %>
     <div class="card my-5 w-100">
