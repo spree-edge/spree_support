@@ -34,10 +34,8 @@ function handleFileUpload(input) {
   const fileInfoContainer = $('#file-info').empty();
   const numFiles = input.files.length;
 
-  // Append the image outside of the loop
   fileInfoContainer.append(`<div mr-3><%= image_tag('backend-custom-file-icon.svg', alt: 'pdf', width: '40px', height: '40px') %></div>`);
 
-  // Append the count of files uploaded inside the loop
   fileInfoContainer.append(`<p class="mb-0">${numFiles} file${numFiles !== 1 ? 's' : ''} uploaded</p>`);
 }
 </script>

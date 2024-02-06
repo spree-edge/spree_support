@@ -56,6 +56,10 @@
 }
 
 .file-uploaded {
-  width: max-content;
+  flex-wrap: wrap   ;
   gap: 10px;
+}
+
+.uploaded-file{
+    width: max-content;
 }

@@ -81,9 +81,9 @@
 
   <div class="col-12">
     <%= f.field_container :files do %>
-      <%= f.label :files, raw(Spree.t(:files) + required_span_tag) %>
+      <%= f.label :files, raw(Spree.t(:files) + required_span_tag), class: 'd-flex' %>
         <%= f.file_field :files, multiple: true, id: 'attach-file', class: 'd-none', onchange: 'handleFileUpload(this)' %>
-        <label for='attach-file' class="d-flex">
+        <label for='attach-file'>
           <div class='d-flex align-items-center bg-transparent add-attachment'>
             <%= image_tag('frontend-custom-upload.svg', alt: 'Add attachment', width: '16px', height: '16px') %>
             <p class="mb-0 ml-3">Add Attachment</p>
