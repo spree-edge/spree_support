@@ -36,11 +36,9 @@
   <label for='upload-file'>
     <div class='d-flex align-items-center bg-transparent add-attachment'>
       <%= image_tag('frontend-custom-upload.svg', alt: 'Add attachment', width: '24px', height: '24px') %>
-      <%# <span>i</span> %>
       <p class="mb-0 ml-3">Add Attachment</p>
     </div>
   </label>
 </div>
 
 <%= f.hidden_field :user_id, value: spree_current_user.try(:id) %>
-  

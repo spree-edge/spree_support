@@ -1,0 +1,61 @@
+.new-ticket {
+  padding: 20px 5px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.add-attachment {
+  border: 1px solid #000000;
+  border-radius: 4px;
+  padding: 10px 16px;
+  cursor: pointer;
+  p {
+    font-size: 16px;
+    color: #000000;
+  }
+}
+
+.chat-upload-button {
+  background-color: #ededed;
+  cursor: pointer;
+}
+
+#conversation_message_field {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.chat-send-button {
+  background-color: #010a51;
+  border-radius: 0 3px 3px 0 !important;
+}
+
+.drop-message {
+  height: 95px;
+}
+
+.bg-success {
+  background-color: #009765;
+  color: white;
+}
+
+.bg-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.bg-awaiting {
+  background-color: #579cdc;
+  color: white;
+}
+
+.bg-warning {
+  background-color: #ffbb52;
+  color: black;
+}
+
+.file-uploaded {
+  width: max-content;
+  gap: 10px;
+}

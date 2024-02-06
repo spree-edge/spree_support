@@ -1,5 +1,7 @@
 <% content_for :page_title do %>
-  <%= link_to Spree.t(:tickets), spree.admin_tickets_url %> /
+  <a class="btn btn-outline-info mr-3 pr-1">
+    <%= svg_icon name: 'chevron-left.svg', width: 15, height: 15%>
+  </a>
   <%= @ticket.number %>
 <% end %>
 
@@ -20,6 +22,8 @@
 <%= form_for [:admin, @ticket] do |f| %>
   <fieldset>
     <%= render partial: 'form', locals: { f: f } %>
-    <%= render partial: 'spree/admin/shared/edit_resource_links' %>
+    <div class="mt-4">
+      <%= render partial: 'spree/admin/shared/edit_resource_links' %>
+    </div>
   </fieldset>
 <% end %>

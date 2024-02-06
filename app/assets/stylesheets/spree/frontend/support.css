@@ -3,4 +3,5 @@
  *= require spree/frontend/custom/chat
  *= require spree/frontend/custom/raise_ticket
  *= require spree/frontend/custom/ticket_listing
+ *= require spree/backend/custom/new_ticket
 */

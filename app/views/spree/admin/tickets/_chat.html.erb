@@ -1,8 +1,13 @@
 <%= turbo_frame_tag 'admin_dashboard_ticket_conversations' do %>
   <% if @ticket.conversations.any? %>
     <% @ticket.conversations.each do |conversation| %>
-      <p><strong> <%= conversation.sender_name %> :</strong>
-        <%= conversation.message %></p>
+      <div class="row row-cols-2 align-items-center">
+        <div class="col-2">
+          <strong class="text-capitalize"> <%= conversation.sender_name %></strong>
+          <p class="mb-0">Thursday 25th June 2023</p>
+        </div>
+        <div class="col-10"><%= conversation.message %></div>
+      </div>
       <!-- Display other message details as needed -->
        <% conversation.files.each_with_index do |file, idx| %>
         <p>

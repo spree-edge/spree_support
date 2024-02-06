@@ -1,5 +1,5 @@
-<div class="row">
-  <div data-hook="new_product_sku" class="col-12">
+<div class="row new-ticket rounded-lg">
+  <div data-hook="new_product_sku" class="col-12 col-md-4">
     <%= f.field_container :title do %>
       <%= f.label :title, raw(Spree.t(:title) + required_span_tag) %>
       <%= f.text_field :title, class: 'form-control', placeholder: 'Enter Here' %>
@@ -71,14 +71,6 @@
     <% end %>
   </div>
 
-  <div class="col-12 col-md-4">
-    <%= f.field_container :files do %>
-      <%= f.label :files, raw(Spree.t(:files) + required_span_tag) %>
-      <%= f.file_field :files, multiple: true %>
-      <%= f.error_message_on :files %>
-    <% end %>
-  </div>
-
   <div class="col-12 col-md-8">
     <%= f.field_container :description do %>
       <%= f.label :description, raw(Spree.t(:description) + required_span_tag) %>
@@ -86,4 +78,30 @@
       <%= f.error_message_on :description %>
     <% end %>
   </div>
+
+  <div class="col-12">
+    <%= f.field_container :files do %>
+      <%= f.label :files, raw(Spree.t(:files) + required_span_tag) %>
+        <%= f.file_field :files, multiple: true, id: 'attach-file', class: 'd-none', onchange: 'handleFileUpload(this)' %>
+        <label for='attach-file' class="d-flex">
+          <div class='d-flex align-items-center bg-transparent add-attachment'>
+            <%= image_tag('frontend-custom-upload.svg', alt: 'Add attachment', width: '16px', height: '16px') %>
+            <p class="mb-0 ml-3">Add Attachment</p>
+          </div>
+        </label>
+        <div class="d-flex file-uploaded" id="file-info"></div>
+      <%= f.error_message_on :files %>
+    <% end %>
+  </div>
+
 </div>
+
+<script>
+function handleFileUpload(input) {
+  const fileInfoContainer = $('#file-info').empty();
+
+  for (const file of input.files) {
+    fileInfoContainer.append(`<div class="file-uploaded d-flex align-items-center border py-2 px-3 rounded-lg mt-2"><%= image_tag('backend-custom-file-icon.svg', alt: 'pdf', width: '40px', height: '40px') %><p class="mb-0">${file.name}</p></div>`);
+  }
+}
+</script>

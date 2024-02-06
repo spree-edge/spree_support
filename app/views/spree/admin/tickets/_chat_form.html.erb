@@ -1,21 +1,43 @@
 <%= turbo_frame_tag 'admin_dashboard_ticket_conversations_chat_form' do %>
   <%= form_for [:admin, @ticket.conversations.new], url: conversations_admin_ticket_path(@ticket), data: { controller: "turbo-stream" } do |f| %>
-    <fieldset>
-      <div class="row">
-        <div class="col-2">
-          <%= f.file_field :files, multiple: true, placeholder: 'Upload Files', class: 'mt-4' %>
+    <fieldset class="row row-cols-2 align-items-center">
+      <div class="col-2">
+        <strong class="text-capitalize">Chirag</strong>
+        <p class="mb-0">Thursday 25th June 2023</p>
+      </div>
+      <div class="d-flex drop-message border rounded-lg px-0 col-10">
+        <div>
+          <%= f.file_field :files, multiple: true, placeholder: 'Upload Files', class: 'mt-4 d-none', id: 'upload-file', onchange: 'handleFileUpload(this)' %>
+          <label for="upload-file" class="h-100 mb-0">
+            <p class="chat-upload-button h-100 d-flex align-items-center px-3">
+              <%= image_tag('frontend-custom-attach-file.svg', alt: 'Add attachment', width: '15px', height: '20px') %>
+            </p>
+          </label>
         </div>
-        <div class="col-8">
+        <div class="w-100">
           <%= f.field_container :message do %>
-            <%= f.label :message, raw(Spree.t(:message) + required_span_tag) %>
-            <%= f.text_area :message, { rows: "5", class: "form-control" } %>
+            <%= f.text_field :message, {class: "w-100 form-control border-0 mb-0 shadow-none", placeholder: "Type your message here"} %>
             <%= f.error_message_on :message %>
+            <div class="d-flex file-uploaded" id="file-info"></div>
           <% end %>
         </div>
-        <div class="col-2">
-          <%= button 'Send', 'save.svg', 'submit', { class: 'btn-success mt-4', data: { disable_with: "#{ Spree.t(:saving) }..." } } %>
-        </div>
+        <%= button_tag class: 'chat-send-button text-white h-100 d-flex align-items-center px-2', id: 'add-to-cart-button', type: :submit do %>
+          <%= image_tag('backend-custom-send-white.svg', alt: 'Send', width: '18px', height: '15px') %>
+        <% end %>
       </div>
     </fieldset>
   <% end %>
 <% end %>
+
+<script>
+function handleFileUpload(input) {
+  const fileInfoContainer = $('#file-info').empty();
+  const numFiles = input.files.length;
+
+  // Append the image outside of the loop
+  fileInfoContainer.append(`<div mr-3><%= image_tag('backend-custom-file-icon.svg', alt: 'pdf', width: '40px', height: '40px') %></div>`);
+
+  // Append the count of files uploaded inside the loop
+  fileInfoContainer.append(`<p class="mb-0">${numFiles} file${numFiles !== 1 ? 's' : ''} uploaded</p>`);
+}
+</script>
