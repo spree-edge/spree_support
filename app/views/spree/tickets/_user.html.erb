@@ -1,0 +1,13 @@
+<div class="chating-user d-flex align-items-sm-center align-items-start">
+  <p class="user-logo rounded-circle"><%= conversation.extract_initials_sender_name %></p>
+  <p class="user-message">
+    <%= conversation.message %>
+  </p>
+
+   <% conversation.files.each do |file| %>
+    <p>
+      <% file_url = Rails.application.routes.url_helpers.url_for(file) %>
+      <%= link_to file.blob.filename.to_s, file_url, target: "_blank" %>
+    </p>
+  <% end %>
+</div>

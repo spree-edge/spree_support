@@ -1,15 +1,11 @@
 <%= turbo_frame_tag 'dashboard_ticket_conversations' do %>
   <% if @ticket.conversations.any? %>
     <% @ticket.conversations.each do |conversation| %>
-      <p><strong> <%= conversation.sender_name %> -> </strong><%= conversation.message %></p>
-
-       <% conversation.files.each_with_index do |file, idx| %>
-        <p>
-          <% file_url = Rails.application.routes.url_helpers.url_for(file) %>
-          <%= link_to file.blob.filename.to_s, file_url, target: "_blank" %>
-        </p>
+      <% if conversation.support? %>
+        <%= render partial: 'spree/tickets/support', locals: { conversation: conversation } %>
+      <% else %>
+        <%= render partial: 'spree/tickets/user', locals: { conversation: conversation } %>
       <% end %>
-      <hr>
     <% end %>
   <% else %>
     <div class="text-center no-objects-found m-5">

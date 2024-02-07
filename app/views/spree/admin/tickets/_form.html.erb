@@ -82,7 +82,7 @@
   <div class="col-12">
     <%= f.field_container :files do %>
       <%= f.label :files, raw(Spree.t(:files) + required_span_tag), class: 'd-flex' %>
-        <%= f.file_field :files, multiple: true, id: 'attach-file', class: 'd-none', onchange: 'handleFileUpload(this)' %>
+        <%= f.file_field :files, multiple: true, id: 'attach-file', class: 'd-none' %>
         <label for='attach-file'>
           <div class='d-flex align-items-center bg-transparent add-attachment'>
             <%= image_tag('frontend-custom-upload.svg', alt: 'Add attachment', width: '16px', height: '16px') %>
@@ -96,12 +96,3 @@
 
 </div>
 
-<script>
-function handleFileUpload(input) {
-  const fileInfoContainer = $('#file-info').empty();
-
-  for (const file of input.files) {
-    fileInfoContainer.append(`<div class="file-uploaded d-flex align-items-center border py-2 px-3 rounded-lg mt-2"><%= image_tag('backend-custom-file-icon.svg', alt: 'pdf', width: '40px', height: '40px') %><p class="mb-0">${file.name}</p></div>`);
-  }
-}
-</script>

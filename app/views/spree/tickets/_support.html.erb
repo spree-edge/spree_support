@@ -1,0 +1,18 @@
+<div class="chating-bot d-flex">
+  <%= image_tag('frontend-custom-helper.svg', alt: 'Helper logo', width: '70px', height: '70px') %>
+  <div class="bot-text">
+    <p class="bot-name">
+      <%= conversation.sender_name %> <span class="date ml-2"><%= @ticket.created_at.strftime("%d %b, %I:%M %p") %></span>
+    </p>
+    <p class="bot-message">
+      <%= conversation.message %>
+    </p>
+
+     <% conversation.files.each do |file| %>
+      <p>
+        <% file_url = Rails.application.routes.url_helpers.url_for(file) %>
+        <%= link_to file.blob.filename.to_s, file_url, target: "_blank" %>
+      </p>
+    <% end %>
+  </div>
+</div>

@@ -2,6 +2,16 @@ module Spree
   class Ticket < Spree::Base
     STATUS = %w(open in_progress closed awaiting).freeze
     PRIORITY = %w(high low medium).freeze
+    CATEGORIES = ['Payments & Billing Issues',
+                  'Login & Account Access',
+                  'Order & Checkout Problems',
+                  'Product & Service Inquiries',
+                  'Shipping & Delivery Concerns',
+                  'Returns & Exchanges',
+                  'Technical Support',
+                  'Feedback & Suggestions',
+                  'Promotions & Discounts',
+                  'Account Closure & Data Privacy'].freeze
 
     include Spree::Core::NumberGenerator.new(prefix: 'T')
     include NumberIdentifier
@@ -29,6 +39,10 @@ module Spree
 
     def open?
       status == 'open'
+    end
+
+    def extract_initials_customer_name
+      customer_name.split.map { |word| word[0] }.join.upcase
     end
   end
 end

@@ -3,3 +3,11 @@
 
 en:
   hello: "Hello world"
+  spree:
+    frontend:
+      support:
+        status: 
+          open: Open Issue
+          in_progress: In Progress
+          closed: Resolved Issue
+          awaiting: Awaiting Response

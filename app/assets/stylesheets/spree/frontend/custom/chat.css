@@ -29,14 +29,28 @@
   }
 }
 
-.awaiting-response {
+.show-page-awaiting {
   background-color: #d6ecff;
   padding: 11px 16px;
   margin-top: 20px;
   gap: 10px;
 }
 
-.resolved-message {
+.show-page-closed {
+  background-color: #e6f6f2;
+  padding: 11px 16px;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.show-page-in_progress {
+  background-color: #e6f6f2;
+  padding: 11px 16px;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.show-page-open {
   background-color: #e6f6f2;
   padding: 11px 16px;
   margin-top: 20px;

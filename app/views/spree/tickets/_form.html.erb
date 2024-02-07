@@ -13,7 +13,7 @@
 </div>
 
 <div class="form-group checkout-content-inner-field mb-5 has-float-label">
-  <%= f.select :category, category_list, { prompt: Spree.t(:category, scope: :shop) }, { class: 'form-control spree-flat-select' } %>
+  <%= f.select :category, ::Spree::Ticket::CATEGORIES, { prompt: Spree.t(:category, scope: :shop) }, { class: 'form-control spree-flat-select' } %>
   <%= f.label :category, 'Category' %>
 </div>
 
@@ -39,6 +39,7 @@
       <p class="mb-0 ml-3">Add Attachment</p>
     </div>
   </label>
+  <div class="d-flex file-uploaded" id="file-info"></div>
 </div>
 
 <%= f.hidden_field :user_id, value: spree_current_user.try(:id) %>

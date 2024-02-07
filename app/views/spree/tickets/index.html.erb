@@ -1,33 +1,22 @@
-<div class="container tickets">
+<div class="container tickets mb-5">
   <div class="d-sm-flex justify-content-between align-items-center">
     <h1 class="mb-0">Recent Raised Tickets</h1>
     <%= link_to 'Raise Ticket', new_ticket_path, class: 'btn btn-primary my-3' %>
   </div>
 
-  <div class="ticket-listing">
-    <% @tickets.each do |ticket| %>
-        <div class="d-sm-flex justify-content-between align-items-center mt-5 pb-4 border-bottom border-lightgray">
+  <div class="ticket-listing pt-0">
+    <% @tickets.each_with_index.each do |ticket, idx| %>
+        <div class="d-sm-flex justify-content-between align-items-center mt-5 pb-4 <%= add_border_inbetween(idx) %>">
           <div>
             <p class="ticket-description"><%= ticket.description %></p>
             <div class="d-flex ticket-detail mt-2 align-items-center">
-              <p class="text-success">Resolved Issue</p>
-              <p>Account</p>
-              <p class="border-right-0">Mon, 22 Nov</p>
+              <p class="<%= class_text_colour(ticket) %>"><%= Spree.t(ticket.status, scope: 'frontend.support.status')  %></p>
+              <p><%= ticket.category %></p>
+              <p class="border-right-0"><%= ticket.created_at.strftime("%a, %d %b") %></p>
             </div>
           </div>
           <p class="mt-2 mt-sm-0"><ins><%= link_to 'View', ticket_path(ticket) %></ins></p>
         </div>
     <% end %>
   </div>
-
-  <% @tickets.each do |ticket| %>
-    <div class="card my-5 w-100">
-      <div class="card-body">
-        <h3 class="card-title">Title: <%= ticket.title %></h3>
-        <h5 class="card-title">Number: <%= ticket.number %></h5>
-        <p class="card-text">Description: <%= ticket.description %></p>
-        <p class="card-text"><%= link_to 'View', ticket_path(ticket) %></p>
-      </div>
-    </div>
-  <% end %>
 </div>

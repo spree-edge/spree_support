@@ -4,143 +4,35 @@
   <%# unsolved ticket %>
   <div class="chating-box text-14 p-3 p-sm-5">
     <p class="ticket-label mb-1">Ticket Raised</p>
-    <p class="ticket-number border-bottom pb-3">T768824336</p>
+    <p class="ticket-number border-bottom pb-3"><%= @ticket.number %></p>
     <p class="category">Category</p>
-    <p class="category-description">I have problem using your app</p>
-    <div class="d-flex awaiting-response align-items-center">
+    <p class="category-description"><%= @ticket.category %></p>
+    <div class="d-flex <%= "show-page-#{@ticket.status}" %> align-items-center">
       <%= image_tag('frontend-custom-waiting-clock.svg', alt: 'Clock', width: '30px', height: '30px') %>
-      <p>Awaiting Response</p>
-    </div>
-
-    <div class="chating-bot d-flex">
-      <%= image_tag('frontend-custom-helper.svg', alt: 'Helper logo', width: '70px', height: '70px') %>
-      <div class="bot-text">
-        <p class="bot-name">
-          Support <span class="date ml-2">11 Dec, 10:31 pm</span>
-        </p>
-        <p class="bot-message">
-          Thank you for your understanding. I completely agree that keeping you
-          informed is crucial. I've made a note to prioritize your order, and
-          I'm currently working with our team to get more detailed information
-          on the status. While I don't have an exact timeframe at the moment, I
-          want to assure you that we're putting in extra effort to expedite the
-          processing. I will personally follow up with you as soon as I have
-          more concrete details or if there are any changes. Your satisfaction
-          is our priority, and I appreciate your continued patience in this
-          matter. If you have any further questions or if there's anything else
-          you'd like to discuss, feel free to reach out. We're here to make sure
-          you have a positive experience with us. Thank you again for your
-          understanding.
-        </p>
-      </div>
-    </div>
-
-    <div class="chating-user d-flex align-items-sm-center align-items-start">
-      <p class="user-logo rounded-circle">CR</p>
-      <p class="user-message">
-        Thank you for keeping me informed. I appreciate your efforts in expediting the process. If there's anything I can do to assist or if there are specific details you need from my end, please let me know.
-      </p>
+      <p><%= Spree.t(@ticket.status, scope: 'frontend.support.status') %></p>
     </div>
 
     <!-- Chat Section -->
-    <%= render partial: 'spree/tickets/chat' %> <% unless @ticket.closed? %>
+    <%= render partial: 'spree/tickets/chat' %>
 
     <div class="chating-user d-flex align-items-sm-center align-items-start">
-      <p class="user-logo rounded-circle">CR</p>
+      <% unless @ticket.closed? %>
+        <p class="user-logo rounded-circle"><%= @ticket.extract_initials_customer_name %></p>
+      <% end %>
+
       <div class="drop-message-container w-100 border rounded-lg">
 
         <!-- Chat form Section -->
-        <%= render partial: 'spree/tickets/chat_form' %> <% else %>
-        <h5>
-          Ticket <%= @ticket.number %> has been marked as closed by the customer
-          support.
-        </h5>
+        <% unless @ticket.closed? %>
+          <%= render partial: 'spree/tickets/chat_form' %>
+        <% else %>
+          <div class="closing-message">
+            <%= image_tag('frontend-custom-check.svg', class:'d-flex mx-auto', alt: 'Check', width: '24px', height: '24px') %>
+            <p class="d-flex justify-content-center mt-1">Ticket <%= @ticket.number %> has been marked as closed by the customer support.</p>
+          </div>
         <% end %>
-
-      </div>
-    </div>
-
-  </div>
-
-
-  <%# resolved ticket %>
-  <div class="chating-box text-14 p-3 p-sm-5">
-    <p class="ticket-label mb-1">Ticket Raised</p>
-    <p class="ticket-number border-bottom pb-3">T768824336</p>
-    <p class="category">Category</p>
-    <p class="category-description">I have problem using your app</p>
-    <div class="d-flex resolved-message align-items-center">
-      <%= image_tag('frontend-custom-resolved.svg', alt: 'Resolved icon', width: '30px', height: '30px') %>
-      <p>Resolved</p>
-    </div>
-
-    <div class="chating-bot d-flex">
-      <%= image_tag('frontend-custom-resolved-helper.svg', alt: 'Helper logo', width: '70px', height: '70px') %>
-      <div class="bot-text">
-        <p class="bot-name">
-          Support <span class="date ml-2">11 Dec, 10:31 pm</span>
-        </p>
-        <p class="bot-message">
-          Thank you for your understanding. I completely agree that keeping you
-          informed is crucial. I've made a note to prioritize your order, and
-          I'm currently working with our team to get more detailed information
-          on the status. While I don't have an exact timeframe at the moment, I
-          want to assure you that we're putting in extra effort to expedite the
-          processing. I will personally follow up with you as soon as I have
-          more concrete details or if there are any changes. Your satisfaction
-          is our priority, and I appreciate your continued patience in this
-          matter. If you have any further questions or if there's anything else
-          you'd like to discuss, feel free to reach out. We're here to make sure
-          you have a positive experience with us. Thank you again for your
-          understanding.
-        </p>
       </div>
     </div>
   </div>
-  <div class="closing-message">
-      <%= image_tag('frontend-custom-check.svg', class:'d-flex mx-auto', alt: 'Check', width: '24px', height: '24px') %>
-      <p class="d-flex justify-content-center mt-1">Ticket T768824336 has been marked as closed by the customer support.</p>
-  </div>
-
 </div>
 
-
-
-<div class="col-lg-6 offset-lg-3 border mt-5">
-  <h3 class="spree-header spree-mb-large spree-mt-large">
-    <%= 'Recent Raised Tickets' %>
-  </h3>
-
-  <p>
-    <strong>USER:</strong>
-    <%= @ticket.user.email %>
-  </p>
-
-  <p>
-    <strong>Title:</strong>
-    <%= @ticket.title %>
-  </p>
-
-  <p>
-    <strong>category:</strong>
-    <%= @ticket.category %>
-  </p>
-
-  <p>
-    <strong>order_no:</strong>
-    <%= @ticket.order_no %>
-  </p>
-
-  <p>
-    <strong>description:</strong>
-    <%= @ticket.description %>
-  </p>
-
-  <p>
-    <strong>phone number:</strong>
-    <%= @ticket.phone_number %>
-  </p>
-
-  <!-- Chat Section -->
-
-</div>
