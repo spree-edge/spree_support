@@ -58,18 +58,17 @@
     <tbody>
       <% @collection.each do |ticket| %>
         <tr class="<%= cycle('odd', 'even') %>">
-          <td class="text-center"><%= ticket.number %></td>
+          <td class="text-center"><%= link_to ticket.number, admin_tickets_path(ticket) %></td>
           <td class="text-center"><%= ticket.customer_name %></td>
           <td class="text-center"><%= ticket.order_no rescue '--' %></td>
           <td class="text-center">
             <div class="d-flex align-items-center justify-content-center">
-              <%= image_tag('backend-custom-high-priority.svg', alt: 'High priority', width: '12px', height: '12px') %>
-              <p class="text-success mb-0 ml-2">High</p>
+              <%= priority_tag(ticket) %>
             </div>
           </td>
           <td class="text-center"><%= ticket.created_at %></td>
           <td class="text-center">
-            <p class="mb-0 bg-success rounded-pill py-1"><%= ticket.status %></p>
+            <%= status_tag(ticket) %>
           </td>
           <td class="text-center"><%= ticket.email %></td>
           <td class="text-center"><%= ticket.phone_number %></td>

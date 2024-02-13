@@ -4,20 +4,30 @@
       <div class="row row-cols-2 align-items-center">
         <div class="col-2">
           <strong class="text-capitalize"> <%= conversation.sender_name %></strong>
-          <p class="mb-0">Thursday 25th June 2023</p>
+          <p class="mb-0"><%= conversation.created_at.strftime('%A %d %B %Y') %></p>
         </div>
         <div class="col-10"><%= conversation.message %></div>
       </div>
-      <!-- Display other message details as needed -->
-       <% conversation.files.each_with_index do |file, idx| %>
-       <div class="d-flex border align-items-center py-2 px-3 rounded-lg mt-2 uploaded-file">
-          <%= image_tag('backend-custom-file-icon.svg', alt: 'Send', width: '40px', height: '40px') %>
-          <p class="mb-0">
-            <% file_url = Rails.application.routes.url_helpers.url_for(file) %>
-            <%= link_to file.blob.filename.to_s, file_url, target: "_blank" %>
-          </p>
+
+
+      <div class="row row-cols-2 align-items-center">
+        <div class="col-2">
+          <%#  %>
         </div>
-        <% end %>
+        <div class="col-10">
+        <!-- Display other message details as needed -->
+         <% conversation.files.each_with_index do |file, idx| %>
+         <div class="d-flex border align-items-center py-2 px-3 rounded-lg mt-2 uploaded-file">
+            <%= image_tag('backend-custom-file-icon.svg', alt: 'Send', width: '40px', height: '40px') %>
+            <p class="mb-0">
+              <% file_url = Rails.application.routes.url_helpers.url_for(file) %>
+              <%= link_to file.blob.filename.to_s, file_url, target: "_blank" %>
+            </p>
+          </div>
+          <% end %>
+        </div>
+      </div>
+
       <hr>
     <% end %>
   <% else %>

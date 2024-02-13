@@ -2,8 +2,8 @@
   <%= form_for [:admin, @ticket.conversations.new], url: conversations_admin_ticket_path(@ticket), data: { controller: "turbo-stream" } do |f| %>
     <fieldset class="row row-cols-2 align-items-center">
       <div class="col-2">
-        <strong class="text-capitalize">Chirag</strong>
-        <p class="mb-0">Thursday 25th June 2023</p>
+        <strong class="text-capitalize"><%= @ticket.assignee.email rescue 'Support' %></strong>
+        <p class="mb-0"><%= DateTime.now.strftime('%A %d %B %Y') %></p>
       </div>
       <div class="d-flex drop-message border rounded-lg px-0 col-10">
         <div>
