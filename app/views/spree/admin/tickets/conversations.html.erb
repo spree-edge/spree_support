@@ -1,21 +1,20 @@
 <% content_for :page_title do %>
-  <a class="btn btn-outline-info mr-3 pr-1">
-    <%= svg_icon name: 'chevron-left.svg', width: 15, height: 15%>
-  </a>
+  <%= page_header_back_button spree.admin_tickets_path %>
   <%= @ticket.number %>
+  <%= status_tag(@ticket) %>
 <% end %>
 
 <%= render partial: 'spree/admin/shared/error_messages', locals: { target: @ticket } %>
 <% content_for :page_tabs do %>
-  <li class="nav-item">
+  <li class="nav-item nav-link">
+    <%= image_tag('backend-custom-ticket-information-icon.svg', alt: 'Icon', width: '13px', height: '10px', class: 'mr-1') %>
     <%= link_to 'Ticket Infomation',
-                spree.edit_admin_ticket_path(@ticket),
-                class: "nav-link" %>
+                spree.edit_admin_ticket_path(@ticket)%>
   </li>
-  <li class="nav-item">
+  <li class="nav-item nav-link active">
+    <%= image_tag('backend-custom-conversation-icon.svg', alt: 'Icon', width: '12px', height: '12px', class: 'mr-1') %>
     <%= link_to 'Conversation',
-                conversations_admin_ticket_path(@ticket),
-                class: "nav-link active" %>
+                conversations_admin_ticket_path(@ticket)%>
   </li>
 <% end  %>
 

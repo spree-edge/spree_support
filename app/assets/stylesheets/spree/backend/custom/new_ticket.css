@@ -36,7 +36,7 @@
 }
 
 .bg-success {
-  background-color: #009765;
+  background-color: #009765 !important;
   color: white;
 }
 
@@ -56,10 +56,26 @@
 }
 
 .file-uploaded {
-  flex-wrap: wrap   ;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
-.uploaded-file{
-    width: max-content;
+.uploaded-file {
+  width: max-content;
+}
+
+thead {
+  background-color: #f9fbff;
+}
+
+.text-12 {
+  font-size: 12px;
+}
+
+.nav-pills .nav-link.active {
+  background-color: #eff4ff;
+}
+
+.gap-20 {
+  gap: 20px;
 }

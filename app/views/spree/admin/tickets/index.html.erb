@@ -52,7 +52,7 @@
         <th scope="col" class="text-center"><%= 'Email' %></th>
         <th scope="col" class="text-center"><%= 'Phone No.' %></th>
         <th scope="col" class="text-center"><%= 'Asignee' %></th>
-        <th scope="col" class="text-center" class="actions"></th>
+        <th scope="col" class="text-center" class="actions"><%= 'Actions' %></th>
       </tr>
     </thead>
     <tbody>
@@ -74,7 +74,7 @@
           <td class="text-center"><%= ticket.phone_number %></td>
           <td class="text-center"><%= ticket.try(:assignee).try(:email) %></td>
           <td class="actions ">
-            <span class="d-flex justify-content-end">
+            <span class="d-flex justify-content-center">
               <%= link_to_edit ticket, no_text: true, class: 'edit' if can?(:edit, ticket) %>
             </span>
           </td>

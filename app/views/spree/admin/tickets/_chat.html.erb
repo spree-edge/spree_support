@@ -6,7 +6,7 @@
           <strong class="text-capitalize"> <%= conversation.sender_name %></strong>
           <p class="mb-0"><%= conversation.created_at.strftime('%A %d %B %Y') %></p>
         </div>
-        <div class="col-10"><%= conversation.message %></div>
+        <div class="col-10 text-break"><%= conversation.message %></div>
       </div>
 
 
@@ -14,7 +14,7 @@
         <div class="col-2">
           <%#  %>
         </div>
-        <div class="col-10">
+        <div class="col-10 d-flex flex-wrap gap-20">
         <!-- Display other message details as needed -->
          <% conversation.files.each_with_index do |file, idx| %>
          <div class="d-flex border align-items-center py-2 px-3 rounded-lg mt-2 uploaded-file">

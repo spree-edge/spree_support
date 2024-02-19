@@ -1,7 +1,5 @@
 <% content_for :page_title do %>
-  <a class="btn btn-outline-info mr-3 pr-1">
-    <%= svg_icon name: 'chevron-left.svg', width: 15, height: 15%>
-  </a>
+  <%= page_header_back_button spree.admin_tickets_path %>
   <%= Spree.t(:new_ticket) %>
 <% end %>
 

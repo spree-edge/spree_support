@@ -11,7 +11,7 @@
 .chating-box {
   border: 1px solid #e2e2e2;
   /* padding: 50px 55px 72px 55px; */
-  margin-top: 30px;
+  margin: 30px 0 80px 0;
   gap: 30px;
   .ticket-label {
     font-weight: 600;
@@ -51,7 +51,7 @@
 }
 
 .show-page-open {
-  background-color: #e6f6f2;
+  background-color: #d6ecff;
   padding: 11px 16px;
   margin-top: 20px;
   gap: 10px;

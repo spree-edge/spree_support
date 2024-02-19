@@ -1,13 +1,21 @@
-<div class="chating-user d-flex align-items-sm-center align-items-start">
-  <p class="user-logo rounded-circle"><%= conversation.extract_initials_sender_name %></p>
-  <p class="user-message">
-    <%= conversation.message %>
-  </p>
-
-   <% conversation.files.each do |file| %>
-    <p>
-      <% file_url = Rails.application.routes.url_helpers.url_for(file) %>
-      <%= link_to file.blob.filename.to_s, file_url, target: "_blank" %>
+<div class="chating-user d-flex align-items-md-center align-items-center">
+  <div>
+    <p class="user-logo rounded-circle text-center"><%= conversation.extract_initials_sender_name %></p>
+  </div>
+  <div class="d-flex flex-column gap-20 flex-wrap">
+    <p class="user-message text-break">
+      <%= conversation.message %>
     </p>
-  <% end %>
+    <div class="d-flex gap-20 flex-wrap">
+      <% conversation.files.each do |file| %>
+        <div class="d-flex border align-items-center py-2 px-3 rounded-lg mt-2 uploaded-file">
+          <%= image_tag('backend-custom-file-icon.svg', alt: 'Send', width: '40px', height: '40px') %>
+          <p>
+            <% file_url = Rails.application.routes.url_helpers.url_for(file) %>
+            <%= link_to file.blob.filename.to_s, file_url, target: "_blank" %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

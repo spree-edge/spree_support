@@ -17,7 +17,7 @@
 
     <div class="chating-user d-flex align-items-sm-center align-items-start">
       <% unless @ticket.closed? %>
-        <p class="user-logo rounded-circle"><%= @ticket.extract_initials_customer_name %></p>
+        <p class="user-logo rounded-circle text-center"><%= @ticket.extract_initials_customer_name %></p>
       <% end %>
 
       <div class="drop-message-container w-100 border rounded-lg">

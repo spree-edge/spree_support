@@ -3,7 +3,7 @@
 
   <div class="drop-message d-flex">
     <div>
-      <%= form.file_field :files, multiple: true, placeholder: 'Upload Files', id: 'upload-file', class: 'd-none' %>
+      <%= form.file_field :files, multiple: true, placeholder: 'Upload Files', id: 'upload-file', class: 'd-none', onchange: 'handleFileUploads(this)' %>
       <label for="upload-file" class="h-100 mb-0">
         <p class="chat-upload-button h-100 d-flex align-items-center px-3">
           <%= image_tag('frontend-custom-attach-file.svg', alt: 'Add attachment', width: '15px', height: '20px') %>
@@ -12,6 +12,7 @@
     </div>
     <div class="w-100 d-flex">
       <%= form.text_field :message, placeholder: "Type your message here", class: 'w-100 form-control spree-flat-input border-0' %>
+      <div class="d-flex align-items-center" id="upload-info"></div>
     </div>
     <div>
       <%= form.submit "Send", id: 'send-message', class:' d-none' %>
@@ -24,3 +25,14 @@
   </div>
   <% end %>
 <% end %>
+
+<script>
+function handleFileUploads(input) {
+  const fileInfoContainer = $('#upload-info').empty();
+  const numFiles = input.files.length;
+
+  fileInfoContainer.append(`<%= image_tag('backend-custom-file-icon.svg', alt: 'pdf', width: '40px', height: '40px') %>`);
+
+  fileInfoContainer.append(`<p class="mb-0">${numFiles} file${numFiles !== 1 ? 's' : ''} uploaded</p>`);
+}
+</script>

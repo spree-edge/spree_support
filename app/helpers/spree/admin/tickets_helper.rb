@@ -40,7 +40,7 @@ module Spree
       end
 
       def build_status_tag(status, bg_class)
-        content_tag(:p, status.titleize, class: "bg-#{bg_class} mb-0 bg-success rounded-pill py-1 px-2") 
+        content_tag(:span, status.titleize, class: "bg-#{bg_class} mb-0 ml-2 bg-success rounded-pill py-1 px-2 text-12") 
       end
     end
   end
