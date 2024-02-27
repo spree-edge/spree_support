@@ -79,6 +79,20 @@
     <% end %>
   </div>
 
+    <div class="col-12 d-flex flex-wrap gap-20">
+      <%- if @ticket.files.present? %>
+        <% @ticket.files.each_with_index do |file, idx| %>
+        <div class="d-flex border align-items-center py-2 px-3 rounded-lg mt-2 uploaded-file">
+          <%= image_tag('backend-custom-file-icon.svg', alt: 'Send', width: '40px', height: '40px') %>
+          <p class="mb-0">
+            <% url = Rails.application.routes.url_helpers.url_for(file) %>
+            <%= link_to file.blob.filename.to_s, url, target: "_blank" %>
+          </p>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+
   <div class="col-12">
     <%= f.field_container :files do %>
       <%= f.label :files, raw(Spree.t(:files) + required_span_tag), class: 'd-flex' %>
@@ -93,6 +107,5 @@
       <%= f.error_message_on :files %>
     <% end %>
   </div>
-
 </div>
 

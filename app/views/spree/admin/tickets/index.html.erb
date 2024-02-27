@@ -58,7 +58,7 @@
     <tbody>
       <% @collection.each do |ticket| %>
         <tr class="<%= cycle('odd', 'even') %>">
-          <td class="text-center"><%= link_to ticket.number, admin_tickets_path(ticket) %></td>
+          <td class="text-center"><%= link_to ticket.number, edit_admin_ticket_path(ticket) %></td>
           <td class="text-center"><%= ticket.customer_name %></td>
           <td class="text-center"><%= ticket.order_no rescue '--' %></td>
           <td class="text-center">
