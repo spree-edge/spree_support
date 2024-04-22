@@ -33,6 +33,9 @@ module Spree
     self.whitelisted_ransackable_associations = %w[conversations]
     self.whitelisted_ransackable_attributes = %w[number category order_no status priority customer_name email]
 
+    scope :open_tickets, -> { where(status: 'open') }
+    scope :running_tickets, -> { where(status: ['in_progress','awaiting']) }
+    scope :solved_tickets, -> { where(status: 'closed') }
     def closed?
       status == 'closed'
     end
