@@ -1,7 +1,7 @@
 Deface::Override.new(
   virtual_path: 'spree/admin/shared/_main_menu',
   name: 'add_support_tab_on_sidebar',
-  insert_after: 'ul#sidebarApps',
+  insert_bottom: '[data-hook="admin_sidebar_div"]',
   text: <<-HTML
     <% if can? :admin, Spree::Ticket %>
       <ul class="nav nav-sidebar" id="sidebarSupport">
