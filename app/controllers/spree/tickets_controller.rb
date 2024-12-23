@@ -1,6 +1,5 @@
 module Spree
   class TicketsController < Spree::StoreController
-    include EnsureSupport
 
     before_action :set_ticket, only: %i[ show conversations ]
 
