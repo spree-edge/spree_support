@@ -1,7 +1,6 @@
 module Spree
   module Admin
     class TicketsController < ResourceController
-      include EnsureSupport
 
       before_action :find_resource, only: [:conversations]
 

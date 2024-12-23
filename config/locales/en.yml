@@ -6,6 +6,7 @@ en:
   spree:
     frontend:
       support:
+        support: support
         status: 
           open: Open Issue
           in_progress: In Progress
